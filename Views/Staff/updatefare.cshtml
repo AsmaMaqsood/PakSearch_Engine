@@ -1,0 +1,60 @@
+﻿@model myproject.Models.Fare
+@{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Update Fare</h2>
+					</header>
+<br />
+<h3 style="color:red; "> @TempData["ufaremsg"]</h3>
+@using (Html.BeginForm())
+{
+      <div class="row uniform">
+         <div class="6u 12u$">
+						<div class="select-wrapper">
+						 <select id="fsid" name="source">
+                          <option >@Model.source</option>
+						   @foreach(var x in ViewBag.stationls)
+                           {  <option>@x.St_name</option> }
+                           </select>
+						  </div>
+			</div>
+            <br />
+			<div class="6u 12u$">
+					<div class="select-wrapper">
+                             <select id="tsid" name="dest">
+                                     <option >@Model.dest</option>
+									 @foreach(var x in ViewBag.stationls)
+                                        {  <option>@x.St_name</option> }
+                              </select>
+					</div>
+			</div>
+            <br />
+              <div class="6u 12u$">
+					<div  class="select-wrapper">
+						<select name="Class" id="de">
+								<option>@Model.Class</option>
+								<option>AC Sleeper</option>
+								<option>AC Business</option>
+								<option>AC Standard</option>
+								<option>First Class Sleeper</option>
+								<option>Economy Class</option>
+								<option>Second Class</option>
+						</select>
+					</div>
+				</div>        
+                <br />
+                 <div class="6u 12u$">
+                  <input  id="fare" name="fareRate" type="text" placeholder="Fare" value="@Model.fareRate" />
+                   </div>
+             
+                    <div class="6u 12u$">
+                    <input  id="Tid" name="ReceiptId" type="hidden"  value="@Model.ReceiptId" />
+                    </div>
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update"   class="button special"/>
+        </div>
+   </div>
+}
+

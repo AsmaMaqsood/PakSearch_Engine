@@ -1,0 +1,78 @@
+﻿
+@model myproject.Models.Soldticket
+@{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+                     ViewBag.Title = "update sold seat";
+  }
+<header class="main">
+                        <br />
+					        <h2> Update seats</h2>
+					</header>
+<h3 style="color:red; "> @TempData["useatmsg"]</h3>
+@using (Html.BeginForm("updatesold", "Staff"))
+{
+      <div class="row uniform">
+         <div class="6u 12u$">
+						<div class="select-wrapper">
+						 <select id="fsid" name="Source">
+                          <option >@Model.Source</option>
+						   @foreach(var x in ViewBag.stationls)
+                           {  <option>@x.St_name</option> }
+                           </select>
+						  </div>
+			</div>
+            <br />
+			<div class="6u 12u$">
+					<div class="select-wrapper">
+                             <select id="tsid" name="Dest">
+                                     <option >@Model.Dest</option>
+									 @foreach(var x in ViewBag.stationls)
+                                        {  <option>@x.St_name</option> }
+                              </select>
+					</div>
+			</div>
+            <br />
+              <div class="6u 12u$">
+					<div  class="select-wrapper">
+						<select name="train_class" id="de">
+								<option >@Model.train_class</option>
+								<option value="AC Sleeper">AC Sleeper</option>
+								<option value="AC Business">AC Business</option>
+								<option value="AC Standard">AC Standard</option>
+								<option value="First Class Sleeper">First Class Sleeper</option>
+								<option value="Economy Class">Economy Class</option>
+								<option value="Second Class">Second Class</option>
+						</select>
+					</div>
+				</div>
+              <br />
+              <div class="6u 12u$">
+                     <select id="tid" name="train">
+                          <option>@Model.train </option>
+                             @foreach(var x in ViewBag.trainls)
+                             {  <option>@x.train_name</option> }
+                        </select>
+               </div>    
+             
+              
+                 <div class="6u 12u$">
+                    <input  id="cust" name="custmor" type="text"  value="@Model.custmor" required/>
+                </div>     
+                <br />
+                
+                    <div class="6u 12u$">
+                    <input  id="seat" name="Seat_Id" type="text" value="@Model.Seat_Id" />
+                    </div>
+                    <div class="6u 12u$">
+                    <input  id="Tid" name="Tid" type="hidden"  value="@Model.Id" />
+                    </div>
+          
+               <div class="6u 12u$">
+                    <input  id="date" name="date" type="hidden"  value="@Model.date" />
+                </div> 
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update"   class="button special"/>
+        </div>
+   </div>
+}
+

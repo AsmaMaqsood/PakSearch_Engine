@@ -1,0 +1,64 @@
+﻿
+@{
+                     Layout = "~/Views/Shared/_Layoutuser.cshtml";
+  }
+							<!-- Content -->
+                            <section>
+                                <h2 style="margin-top:-60px; margin-bottom:-20px;">Contact Us</h2>
+    <hr />
+@using (Html.BeginForm("Cont","Home"))
+{
+    <h3 style="color:red;">@TempData["msg"]</h3>
+    
+    <div class="form-group" style="margin-bottom:-10px;">
+        @Html.Label("Your Name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+             <input type="text"  name="uname" id="name"  placeholder="Name" value="@TempData["name"]" required/>
+        </div>
+    </div>
+          <br /><br /><br />
+     <div class="form-group" style="margin-top:-10px;">
+        @Html.Label("Your Email", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+             <input type="text"  name="email"   placeholder="Email" value="@TempData["mail"]" required/>
+        </div>
+    </div>
+    <br /><br />
+     <div class="form-group">
+        @Html.Label("Subject", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+             <input type="text" name="subject" id="subj"  placeholder="Subject" value="@TempData["sub"]" required/>
+        </div>
+    </div>
+    <br /><br />
+     
+    <div class="form-group">
+        @Html.Label("Message", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <textarea name="message"  placeholder="Message"  rows="6"  required></textarea>
+        </div>
+    </div>
+           <br /> <br /><br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br />
+            <input type="submit"  value="Send" class="special" />
+        </div>
+    </div>
+    }
+                                <br /><br /> <br />
+		<br /><br />
+                                    </section>
+                            <section>
+									<header class="major">
+										<h2>Popular Destination</h2>
+									</header>
+									<div class="mini-posts">
+						
+										    <a href="#" class="image"><img src="~/Content/images/snap.png" alt="" /></a>
+									</div >
+											
+                             </section>
+
+			
+

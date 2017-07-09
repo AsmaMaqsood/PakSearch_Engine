@@ -1,0 +1,56 @@
+﻿ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+                    <header class="main">
+                        <br />
+					        <h2> Add Staff </h2>
+					</header>
+  <h3 style="color:red; "> @TempData["astaffmsg"]</h3>
+                      
+@using (Html.BeginForm("create","Admin"))
+{
+   
+
+      <div class="row uniform">
+        <div class="6u 12u$" >
+            <input  id="Emp_id" name="Emp_id" type="text" placeholder="Employee ID (E-1)" value="@TempData["eid"]" required/>
+            
+        </div>
+       
+        <div class="6u 12u$">
+            <input  id="EmpName" name="empName" type="text" placeholder="Employee Name" value="@TempData["n"]" required/>
+            
+        </div>
+
+        <div class="6u 12u$">
+            <input  id="Address" name="Address" type="text" placeholder="Employee Address"  value="@TempData["adr"]" required/>
+            
+        </div>
+        
+        <div class="6u 12u$">
+            <input id="Phone" name="Phone" type="text" placeholder="Employee Phone" value="@TempData["ph"]" required/>
+           
+        </div>
+        <div class="6u 12u$">
+           <input type="date" name="Date_joined" id="Date_joined" value="@TempData["d"]"  required/>  
+        </div>
+       <div >
+          <label >Gender</label>
+        </div>
+        <div class="4u 12u$(small)">
+				<input type="radio" id="Gender2" name="Gender"  value="male">
+				<label  style="margin-left:35%" for="Gender2">Male</label>
+		</div>
+		<div class="4u$ 12u$(small)">
+				<input type="radio" id="Gender1" name="Gender"  value="female">
+				<label style="margin-left:-35%" for="Gender1">Female</label>
+		</div>
+   
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="ADD"   class="button special"/>
+        </div>
+   </div>
+}
+
+
+

@@ -1,0 +1,52 @@
+﻿@model List<myproject.Models.Announcement>
+
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<script>
+
+    function f2(id) {
+        x = confirm("Are you sure you wnt to delete this Announcement? ");
+        if (x == true) {
+            // var trid = $("#aid").val();
+            //alert(trid);
+            var d = { "id": id };
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/Admin/deleteAnc",
+                data: d,
+                success: function (resp) {
+                    if (resp.valid == true) {
+                        $("#" + id).hide();
+                        alert("Announcement Successfully deleted!!!!");
+                    }
+                },
+                error: function (e) {
+                    alert("error  " + e);
+                }
+            };
+
+            $.ajax(settings);
+        }
+        else {
+
+        }
+    }
+</script>
+<header class="main">
+                        <br />
+					        <h2> Important Announcements</h2>
+					</header>
+    <form>
+        @foreach (var item in Model)
+        {        
+                 <div class="box" id="@item.Id">
+                      <b Style=" padding-bottom:-53px; margin-bottom:-22px;"> @item.title </b><br />
+                     <a Style="margin-left:830px; padding-top:-9px; padding-bottom:-3px;" class="icon fa-remove" onclick=f2("@item.Id")></a>
+                       <p Style=" padding-top:-39px; margin-top:-22px; margin-right:15px;"> @item.Description </p>
+                         </div>		
+            <br />
+        }
+        </form>
+<br />

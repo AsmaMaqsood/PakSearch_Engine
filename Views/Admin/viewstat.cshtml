@@ -1,0 +1,41 @@
+﻿@model List<myproject.Models.Station>
+
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> View Stations </h2>
+					</header>
+
+<table>
+    <tr>
+       
+        <th>
+            Station_Name
+        </th>
+        <th>
+           Num of Platforms
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @item.St_name
+        </td>
+        <td>
+            @item.noOfPlatform
+        </td>
+       
+        <td>
+            @Html.ActionLink(".","updatestat",  new { id=item.St_name}, new { @class="icon fa fa-pencil fa-fw"})  |
+            @Html.ActionLink( ".","Delstat", new { id=item.St_name }, new { @class="icon fa fa-trash-o fa-fw"}) 
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,61 @@
+﻿ @{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+	<!-- Content -->
+                            <section>
+                                        <header class="main">
+										            <h2> Add Fare  </h2>
+									      </header>
+                                <h3 style="color:red; "> @TempData["faremsg"]</h3>
+                                        <form method="post" action="/Staff/addFare">
+											    <div class="row uniform">
+									
+												<!-- Break -->
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+															 <select id="fsid" name="source">
+                                                                <option value="0">--Departure--</option>
+																 @foreach(var x in ViewBag.stationls)
+                                                                 {  <option>@x.St_name</option> }
+                                                             </select>
+														</div>
+													</div>
+                                                    <br />
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+                                                            <select id="tsid" name="dest">
+                                                                <option value="0">--Destination--</option>
+																 @foreach(var x in ViewBag.stationls)
+                                                                 {  <option>@x.St_name</option> }
+                                                             </select>
+														</div>
+													</div>
+                                                    <br />
+                                                    <div class="6u 12u$">
+														<div  class="select-wrapper">
+															<select name="Class" id="de">
+																<option value="0">--Class--</option>
+																<option>AC Sleeper</option>
+																<option>AC Business</option>
+																<option>AC Standard</option>
+																<option>First Class Sleeper</option>
+																<option>Economy Class</option>
+																<option>Second Class</option>
+															</select>
+														</div>
+													</div>
+                                                    <br />
+                                                     <div class="6u 12u$">
+                                                        <input  id="fare" name="fareRate" type="text" placeholder="Fare" value="@TempData["fa"]" required/>
+                                                    </div>
+                                                   
+                                               
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+																<li><input type="submit" value="Add Fare" class="special" /></li>
+														</ul>
+														</div>
+													</div>
+													</form>
+                                    </section>

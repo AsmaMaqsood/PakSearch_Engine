@@ -1,0 +1,35 @@
+﻿@model myproject.Models.Train
+@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Add Train</h2>
+					</header>
+<h3 style="color:red; "> @TempData["atrainmsg"]</h3>
+  <br />
+@using (Html.BeginForm())
+{
+      <div class="row uniform">
+       
+        <div class="6u 12u$">
+             @Html.LabelFor(model => model.train_name)
+
+            @Html.EditorFor(model => model.train_name)
+            
+            @Html.ValidationMessageFor(model => model.train_name,"",new { style="color:red;" } )
+        </div>
+          <div class="6u 12u$">
+              @Html.LabelFor(model => model.Seats)
+
+            @Html.EditorFor(model => model.Seats)
+            @Html.ValidationMessageFor(model => model.Seats,"",new { style="color:red;" })
+        </div>
+         <div class="6u 12u$">
+            <input  id="status" name="Status" type="hidden"  value="1" />
+        </div>
+        <div class="12u$" style="margin-top:-18px;" >
+            <input type="submit"  style="width:49%" value="ADD"   class="button special"/>
+        </div>
+   </div>
+}

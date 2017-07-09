@@ -1,0 +1,33 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Delete Train Schedule</h2>
+					</header>
+<h3>Are you sure you want to delete this?</h3>
+    <div class="box" style="border-color:#f56a6a; border-bottom-width:2px; border-top-width:2px;">
+   <div >
+     &nbsp &nbsp &nbsp &nbsp    Station   &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Model.stn_name
+    </div>
+    <br />
+    <div >
+     &nbsp &nbsp &nbsp &nbsp   Train  &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp  @Model.tname
+    </div>
+    <br />
+    <div >
+     &nbsp &nbsp &nbsp &nbsp   Departure time &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Model.Depart_time
+    </div>
+    <br />
+        <div >
+     &nbsp &nbsp &nbsp &nbsp   Arrival time &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp  @Model.Ariv_time
+    </div>
+    <br />
+   
+<form action="/Admin/delschedule" method="post">
+
+   <input type="hidden" name="trname" value="@Model.Id" />
+
+     &nbsp &nbsp &nbsp &nbsp     <input class="special" type="submit" value="Delete" /> 
+ </form>
+</div>

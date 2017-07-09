@@ -1,0 +1,233 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Register Now</title>
+<!-- Meta tag Keywords -->
+    <link rel="icon" href="~/Content/images/logo.png"">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Flashy Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+<link rel="stylesheet" href="~/Content/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- online-fonts -->
+<style>
+    body {
+  text-align: center;
+	font-family: 'Roboto', sans-serif;
+	background-image: url("/Content/images/class1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    background-position: center;
+}
+    .container{
+  display: block;
+  position: relative;
+  margin: 10px auto;
+  height: auto;
+  width: 500px;
+  padding: 10px;
+}
+
+h1 {
+	  color: #fff;
+       font-size: 1.35em;
+}
+
+.container ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li{
+   color: #fff;
+  display: block;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100px;
+}
+
+ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+ul li label{
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 1.35em;
+  padding: 25px 25px 25px 80px;
+  margin: 10px auto;
+  height: 30px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+ul li:hover label{
+	color: #FFFFFF;
+}
+
+ul li .check{
+  display: block;
+  position: absolute;
+  border: 5px solid #AAAAAA;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  top: 30px;
+  left: 20px;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: border .25s linear;
+}
+
+ul li:hover .check {
+  border: 5px solid #FFFFFF;
+}
+
+ul li .check::before {
+      display: block;
+      position: absolute;
+      content: '';
+      border-radius: 100%;
+      height: 15px;
+      width: 15px;
+      top: 5px;
+      left: 5px;
+      margin: auto;
+	  transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+
+input[type=radio]:checked ~ .check {
+  border: 5px solid 	#32CD32;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: 	#32CD32;
+}
+
+input[type=radio]:checked ~ label{
+  color: #fff;
+}
+
+
+/* Styles for alert... 
+by the way it is so weird when you look at your code a couple of years after you wrote it XD */
+
+.alert {
+	box-sizing: border-box;
+	background-color: #151515;
+	width: 100%;
+	position: relative; 
+	top: 0;
+	left: 0;
+	z-index: 300;
+	padding: 20px 40px;
+	color: white;
+}
+
+.alert h2 {
+	font-size: 25px;
+	color: white;
+	margin-top: 0;
+}
+
+.alert p {
+	line-height: 1.6em;
+	font-size:18px;
+}
+
+.alert a {
+	color: #0DFF92;
+}
+</style>
+
+
+</head>
+<body  onLoad="document.registerf.fname.focus();" >
+	<!-- main -->
+	<div style=" margin-top:-70px; ">
+		<div class="center-container">
+			<!--header-->
+            
+			<div class="header-w3l">
+                
+				<h1 style="margin-top" > <span>Register</span> Account Here !!</h1>
+			</div>
+			<!--//header-->
+			<div class="main-content-agile">
+				<div class="left-w3l-mk">
+					<img src="~/Content/images/pro.jpg" alt=" ">
+					<br />
+					<div class="social-icon">
+							<a href="https://twitter.com/pakrailpk" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="https://www.facebook.com/pakrail.gov.pk/" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="https://s50522.pakservers.com:2096/index.php" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+						</div>
+				</div>
+				<div class="sub-main-w3">
+                     <h3 style="color:red; "> @TempData["registermsg"]</h3>
+                        <br />	
+					<form name="registerf" action="/Home/saveregister" method="post" >
+                        <input placeholder="Name" id="fname" name="Name" class="user" type="text" required="" value="@TempData["name"]">
+						<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br><br>
+						<input placeholder="E-mail" id="email" name="email" class="user" type="email" required="" value="@TempData["email"]">
+						<span class="icon2"><i class="fa fa-envelope" aria-hidden="true"></i></span><br><br>
+						<input  placeholder="Password" id="pass" name="Password" class="pass" type="password" value="@TempData["pass"]" required="">
+						<span class="icon3"><i class="fa fa-unlock" aria-hidden="true"></i></span><br><br />
+						<input  placeholder="ReEnter Password" id="rpass" name="rePassword" class="pass" type="password" value="@TempData["rpass"]" required="">
+						<span class="icon4"><i class="fa fa-unlock" aria-hidden="true"></i></span><br><br />
+						<input placeholder="Phone" name="Phone"  id="phone" class="user" type="text" value="@TempData["phone"]"   required="">
+						<span class="icon5"><i class="fa fa-phone" aria-hidden="true"></i></span><br><br />
+						<div class="container">
+	                        <h1 Style="margin-left:-390px; margin-top:-10px">Gender</h1>
+                            <ul>
+                                  <li Style="margin-left:0px; margin-top:-10px">
+                                    <input type="radio" id="f-option" name="selector" value="male">
+                                    <label for="f-option">Male</label>
+                                    <div class="check"></div>
+                                  </li>
+  
+                                  <li Style="margin-left:0px; margin-top:-15px ; margin-bottom:-5px"">
+                                    <input type="radio" id="s-option" name="selector" value="female">
+                                    <label for="s-option">Female</label>
+    
+                                    <div class="check"><div class="inside"></div></div>
+                                  </li>
+                                </ul>
+                                </div>
+ 
+						<div class="sub-w3l">
+							<div class="right-w3l">
+								<input type="submit" value="Register">
+							</div>
+						</div>
+                  
+					</form>
+                    <br /> <a style="color: #fff;font-size: 1.52em; " href="/Home/Login">Login To your Account</a>
+                            
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--//main-->
+            <div class="footer">
+				</div>
+		</div>
+	</div>
+	
+<!-- js -->
+<script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="~/Scripts/jquery.vide.min.js"></script>
+</body>
+</html>

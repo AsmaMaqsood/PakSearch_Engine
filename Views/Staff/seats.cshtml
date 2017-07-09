@@ -1,0 +1,131 @@
+﻿ @{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+<script>
+     function f1() {
+
+         var name=$("#tid").val();
+        
+         var d = { name: $("#tid").val() };
+
+         var settings = {
+             type: "POST",
+             dataType: "json",
+             url: "/Home/getstat",
+             data: d,
+             success: function (resp) {
+                 console.log(resp);   
+                 if (resp.list) {
+                     $("#fsid").empty();
+                     $("#tsid").empty();
+                     $("#fsid").append('<option value=0> -- Select Departure --</option>');
+                     $("#tsid").append('<option value=0>-- Select Destination --</option>');
+
+                     $.each(resp.list, function (i, item) {
+                         $("#fsid").append('<option value=' + item.station + '>' + item.station + '</option>');
+                         $("#tsid").append('<option value=' + item.station + '>' + item.station + '</option>');
+
+                         console.log(item.station);
+                     });
+                     
+                 }
+                 else {
+                     alert("No entry for selected train!!!");
+                 }
+             },
+             error: function (e) {
+                 alert("error");
+             }
+         };
+
+         $.ajax(settings);
+
+     };
+    
+</script>
+	<!-- Content -->
+                            <section>
+                                        <header class="main">
+										            <h2> Add Seats </h2>
+									      </header>
+                                <h3 style="color:red; "> @TempData["seatmsg"]</h3>
+                                        <form method="post" action="/Staff/addSeats">
+								    <div class="row uniform">
+									    <div class="6u 12u$">
+										<div  class="select-wrapper">
+												<select name="train"  id="tid" onchange="f1()">
+                                                <option value="null">--Select Train--</option>
+                                                <option value="23UP - AKBAR EXPRESS"> Akber Express (LAHORE JN. To QUETTA)</option>
+                                                <option value="24DN - AKBAR EXPRESS"> Akber Express (QUETTA To LAHORE JN. )</option>
+                                                <option value="10DN - ALLAMA IQBAL EXPRESS"> Allama Iqbal Express (SIALKOT JN. To KARACHI CANTT)</option>
+                                                <option value ="9UP - ALLAMA IQBAL EXPRESS"> Allama Iqbal Express (KARACHI CANTT To SIALKOT JN.)</option>
+                                                <option value="13UP - AWAM EXPRESS"> Awam Express (PESHAWAR CANTT To KARACHI CANTT)</option>
+                                                <option value="14DN - AWAM EXPRESS"> Awam Express (KARACHI CANTT To PESHAWAR CANTT)</option>
+                                                <option value="26DN -  Bahauddin Zakria Express"> Bahauddin Zakria Express (MULTAN CANTT To KARACHI CITY)</option>
+                                                <option value="25UP -  Bahauddin Zakria Express"> Bahauddin Zakria Express (KARACHI CITY To MULTAN CANTT)</option>
+                                                </select>
+											</div>
+										</div>
+                                        <!-- Break -->
+										<div class="6u 12u$">
+										<div class="select-wrapper">
+										<select name="from" id="fsid">
+                                                <option> -- Select Departure--</option>
+                                             @foreach(var x in ViewBag.stls)
+                                              {
+                                                   <option>@x.St_name</option>
+                                                }
+                                         </select>
+										</div>
+										</div>
+                                                    <br />
+                                               <!-- Break -->
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+															<select name="to" id="tsid">
+                                                                 <option> --Select Destination--</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+                                                   
+                                                    <div class="6u 12u$">
+														<div  class="select-wrapper">
+															<select name="trainclass" id="de">
+																<option value="0">--Select Class --</option>
+																<option>AC Sleeper</option>
+																<option>AC Business</option>
+																<option>AC Standard</option>
+																<option>First Class Sleeper</option>
+																<option>Economy Class</option>
+																<option>Second Class</option>
+															</select>
+														</div>
+													</div>
+                                                    <br />
+                                                     <div class="6u 12u$">
+                                                         
+                                                            <input   name="custmor" type="text" placeholder="Enter Customer Name"  value="@TempData["cust"]"  required/>
+                                                    </div>        
+                                                                 
+                                                       <div class="6u 12u$">
+                                                         
+                                                            <input  id="seat" name="Seat_Id" type="text" placeholder="Enter Seat num"   value="@TempData["seat"]"  required/>
+                                                    </div>
+                                                   
+                                                    <div class="6u 12u$">
+                                                        <input  id="date" name="date" type="date"  value="@TempData["dat"]"    required/>
+                                                    </div>
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+															<li><input type="submit" value="Add Seat" class="special" /></li>
+														</ul>
+														</div>
+													</div>
+													</form>
+                                    </section>

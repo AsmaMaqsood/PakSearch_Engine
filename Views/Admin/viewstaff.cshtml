@@ -1,0 +1,60 @@
+﻿@model List<myproject.Models.Employee>
+
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> View Staff </h2>
+					</header>
+<table>
+    <tr>
+        <th>
+           Emp_id
+        </th>
+        <th>
+            Emp_Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Gender
+        </th>
+         <th>
+            Phone
+        </th>
+         <th>
+           Date Joined
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.Emp_id
+        </td>
+        <td>
+            @item.EmpName
+        </td>
+        <td>
+           @item.Address
+        </td>
+        <td>
+           @item.Gender
+        </td>
+        <td>
+           @item.Phone
+        </td>
+        <td>
+           @item.Date_joined
+        </td>
+        <td>
+            @Html.ActionLink(".","Updatestaff",  new { id=item.Emp_id }, new { @class="icon fa fa-pencil fa-fw"})  |
+            @Html.ActionLink( ".","Deletestaff", new { id=item.Emp_id }, new { @class="icon fa fa-trash-o fa-fw"}) 
+        </td>
+    </tr>
+}
+</table>

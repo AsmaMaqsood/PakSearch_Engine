@@ -1,0 +1,67 @@
+﻿@model List<myproject.Models.Ticket>
+@{
+    ViewBag.Title = "Show Seats";
+}
+ @{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> View Seats </h2>
+					</header>
+<br />
+<table>
+    <tr>
+        <th>
+           source
+        </th>
+        <th>
+            Destination
+        </th>
+        <th>
+            train class
+        </th>
+        <th>
+            train name
+        </th>
+         <th>
+           seat_id
+        </th>
+        <th>
+           Customer
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.Source
+        </td>
+        <td>
+            @item.Dest
+        </td>
+        <td>
+           @item.trainclass
+        </td>
+        <td>
+           @item.train
+        </td>
+      
+        <td>
+           @item.Seat_Id
+        </td>
+        <td>
+           @item.custmor
+        </td>
+        <td>
+            
+          @Html.ActionLink(".","Updateseat",  new { id=item.Tid }, new { @class="icon fa fa-pencil fa-fw"}) | 
+            @Html.ActionLink( ".","Deleteseat", new { id=item.Tid }, new { @class="icon fa fa-trash-o fa-fw"}) |
+             @Html.ActionLink(".","Confirmseat",  new { id=item.Tid }, new { @class="icon fa fa-check fa-fw"}) 
+        </td>
+    </tr>
+}
+</table>
+

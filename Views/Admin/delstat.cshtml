@@ -1,0 +1,28 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Delete Station</h2>
+					</header>
+<br />
+<h3>Are you sure you want to delete this?</h3>
+
+  <div class="box" style="border-color:#f56a6a; border-bottom-width:2px; border-top-width:2px;">
+  
+    <div >
+     &nbsp &nbsp &nbsp &nbsp   Station Name: &nbsp &nbsp &nbsp &nbsp    &nbsp &nbsp  @Model.St_name
+    </div>
+    <br />
+    <div >
+      &nbsp &nbsp &nbsp &nbsp   Total Platforms :  &nbsp &nbsp &nbsp &nbsp   @Model.noOfPlatform
+    </div>
+    
+    <br />
+<form action="/Admin/delst" method="post">
+
+    <input type="hidden" name="stname" value="@Model.St_name" />
+   
+      &nbsp &nbsp &nbsp &nbsp   <input class="special" type="submit" value="Delete" /> 
+ </form>
+</div>

@@ -1,0 +1,26 @@
+﻿@model myproject.Models.Station
+@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2>Update Station</h2>
+					</header>
+<br />
+<h3 style="color:red; "> @TempData["ustatmsg"]</h3>
+@using (Html.BeginForm())
+{
+      <div class="row uniform">
+       
+        <div class="6u 12u$">
+            <input  id="stName" name="St_name" type="text" placeholder="Station Name" value="@Model.St_name" required/>
+        </div>
+          <div class="6u 12u$">
+           <input  id="nop" name="noOfPlatform" type="text" placeholder="Number of Platforms" value="@Model.noOfPlatform" required/>
+        </div>
+        
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="UPDATE"   class="button special"/>
+        </div>
+   </div>
+}

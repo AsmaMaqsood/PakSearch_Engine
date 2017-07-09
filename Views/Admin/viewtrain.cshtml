@@ -1,0 +1,46 @@
+﻿@model List<myproject.Models.Train>
+
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> View Trains </h2>
+					</header>
+
+<table>
+    <tr>
+       
+        <th>
+            Train_Name
+        </th>
+        <th>
+           Seats
+        </th>
+        <th>
+           Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @item.train_name
+        </td>
+        <td>
+            @item.Seats
+        </td>
+        <td>
+           @item.Status
+        </td>
+       
+        <td>
+            @Html.ActionLink(".","Updatetrain",  new { id=item.train_name}, new { @class="icon fa fa-pencil fa-fw"})  |
+            @Html.ActionLink( ".","Deltrain", new { id=item.train_name }, new { @class="icon fa fa-trash-o fa-fw"}) 
+        </td>
+    </tr>
+}
+</table>

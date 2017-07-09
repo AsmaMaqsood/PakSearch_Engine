@@ -1,0 +1,127 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>@ViewBag.Title</title>
+        <link rel="icon" href="~/Content/images/logo.png"">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="~/Content/main.css" />
+		
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    
+ <!-- date picker-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	</head>
+	<body>
+        	<!-- Wrapper -->
+			<div id="wrapper">
+                
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/Staff/Index" class="logo"><strong>PAKISTAN RAILWAYS</strong></a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/pakrailpk" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/pakrail.gov.pk/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://s50522.pakservers.com:2096/index.php" class="icon fa-medium"><span class="label">Medium</span></a></li>
+									    
+                                        <li><span class="label"> Login </span></li>
+                                        <li><a href="/Home/Login" class="icon fa-sign-in" ></a></li>
+                                        <li><span class="label"> Register </span></li>
+                                        <li><a href="/Home/Register" class="icon fa-registered" ><span class="label"> Register </span></a></li>
+										<li><span class="label"> Logout </span></li>
+                                        <li><a href="/Home/Logout" class="icon fa-sign-out" ></a></li>
+                                    </ul>
+								</header>
+        @RenderBody()
+                            </div>
+					</div>
+               
+        <!-- Sidebar -->
+
+					<div id="sidebar">
+						<div class="inner">
+
+							
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<span class="image left" style="height:60px; width:60px" ><img src="~/Content/images/logo.png" alt="" /></span>
+                                            <h2>Pakistan Railways</h2>
+									</header>
+									<ul>
+                                        <li><a class="list-group-item" href="/Staff/Staffindex"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a></li>
+                                             
+                                        <li>
+											<span class="opener">Manage Seats</span>
+											<ul>
+
+												<li><a class="list-group-item" href="/Staff/Seats"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Add Seats</a></li>
+                                                <li><a class="list-group-item" href="/Staff/Soldseats"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp; View Seats</a></li>
+                                               
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Manage Fare</span>
+											<ul>
+                                                <li><a class="list-group-item" href="/Staff/Fare"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Add Fare</a></li>
+                                                <li><a class="list-group-item" href="/Staff/Showfare"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp; View Fare</a></li> 
+											</ul>
+										</li>
+                                         <li><a class="list-group-item" href="/Staff/showseats"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp; Reserved Seats</a></li>
+                                        <li><a class="list-group-item" href="/Staff/Pass"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>&nbsp; Update Password</a></li>
+									</ul>
+								</nav>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Add Announcement</h2>
+									</header>
+									<h3 style="color:red; "> @TempData["anmsg"]</h3>
+										<form method="post" action="/Staff/AddAnnouncements">
+											<div class="row uniform">
+														<div class="12u$">
+														<input type="text" name="title" id="title" value="" placeholder="Title" />
+														</div>
+														<!-- Break -->
+                                                        <!-- Break -->
+															<div class="12u$">
+																<textarea name="descript" id="descript" placeholder="Enter Description" rows="6"></textarea>
+															</div>
+														<div class="12u$">
+														<ul class="actions">
+																<li><input type="submit" value="Add" class="special" /></li>
+																<li><input type="reset" value="Reset" /></li>
+														</ul>
+														</div>
+														</div>
+													</form>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									</footer>
+						</div>
+					</div>
+</div>
+
+		<!-- Scripts -->
+			<script src="~/Scripts/jquery.min.js"></script>
+			<script src="~/Scripts/skel.min.js"></script>
+			<script src="~/Scripts/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="~/Scripts/main.js"></script>
+
+	</body>
+</html>
+

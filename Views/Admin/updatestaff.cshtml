@@ -1,0 +1,50 @@
+﻿@model myproject.Models.Employee
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Update Staff </h2>
+					</header>
+<h3 style="color:red; "> @TempData["ustaffmsg"]</h3>
+@using (Html.BeginForm())
+{
+   
+     <div class="row uniform">
+        <div class="6u 12u$" >
+            <input  id="Emp_id" name="Emp_id" type="hidden" value="@Model.Emp_id" />
+            
+        </div>
+       
+        <div class="6u 12u$">
+            <input  id="EmpName" name="empName" type="text" placeholder="Employee Name" value="@Model.EmpName" required/>
+            
+        </div>
+
+        <div class="6u 12u$">
+            <input  id="Address" name="Address" type="text" placeholder="Employee Address"  value="@Model.Address" required/>
+            
+        </div>
+        
+        <div class="6u 12u$">
+            <input id="Phone" name="Phone" type="text" placeholder="Employee Phone" value="@Model.Phone" required/>
+           
+        </div>
+        <div class="6u 12u$">
+           <input type="date" name="Date_joined" id="Date_joined" value="@Model.Date_joined"  required/>  
+        </div>
+        <div class="6u 12u$(small)">
+            <select id="tid" name="Gender" >
+               <option> @Model.Gender </option>
+                <option> Male</option>
+                 <option>Female</option>
+              </select>
+        </div>
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update"   class="button special"/>
+        </div>
+   </div>
+}
+
+
+

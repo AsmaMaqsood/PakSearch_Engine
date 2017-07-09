@@ -1,0 +1,28 @@
+﻿@model List<myproject.Models.Announcement>
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+							<!-- Banner -->
+								
+										
+											<h3>Welcome to Admin Panel</h3>	
+									
+									<div class="content">	
+                                             <h2> Important Announcements</h2>
+                                               
+                                            @foreach (var item in Model)
+                                            {
+                                                <input type="hidden" name="id" value="@item.Id"/>
+                        
+                                                     <div class="box">
+                                                          <h3> @item.title</h3> 
+                                                            @item.Description 
+                                                             </div>
+						
+                                                <br />
+                                            }
+										<ul class="actions">
+											<li><a href="/Admin/Announce" class="button big">Read More</a></li>
+										</ul>
+									</div>
+									

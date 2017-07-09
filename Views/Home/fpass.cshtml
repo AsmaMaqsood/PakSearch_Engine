@@ -1,0 +1,33 @@
+﻿
+@{
+                     Layout = "~/Views/Shared/_Layoutuser.cshtml";
+  }
+							<!-- Content -->
+                            <section>
+@using (Html.BeginForm("forgetpass", "Home"))
+{
+    <h4>Give your Email and we send you an email for Password Recovery!</h4>
+    <hr />
+    <h3 style="color:red;">@TempData["msg"]</h3>
+     <div class="form-group">
+        @Html.Label("Your Email", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+             <input type="text"  name="email"   placeholder="Email" required/>
+        </div>
+    </div>
+    <br /><br />
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br />
+            <input type="submit"  value="Send" class="special" />
+        </div>
+    </div>
+    }
+        <br /><br /> <br />
+		<br /><br />
+       </section>
+                          
+
+			
+

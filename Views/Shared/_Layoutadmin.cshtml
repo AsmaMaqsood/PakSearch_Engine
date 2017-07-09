@@ -1,0 +1,132 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>@ViewBag.Title</title>
+        <link rel="icon" href="~/Content/images/logo.png"">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="~/Content/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    
+ <!-- date picker-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	</head>
+	<body>
+        	<!-- Wrapper -->
+			<div id="wrapper">
+                
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/home/Index" class="logo"><strong>PAKISTAN RAILWAYS</strong></a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/pakrailpk" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/pakrail.gov.pk/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://s50522.pakservers.com:2096/index.php" class="icon fa-medium"><span class="label">Medium</span></a></li>
+									    
+                                        <li><span class="label"> Login </span></li>
+                                        <li><a href="/Home/Login" class="icon fa-sign-in" ></a></li>
+                                        <li><span class="label"> Register </span></li>
+                                        <li><a href="/Home/Register" class="icon fa-registered" ><span class="label"> Register </span></a></li>
+										<li><span class="label"> Logout </span></li>
+                                        <li><a href="/Home/Logout" class="icon fa-sign-out" ></a></li>
+                                    </ul>
+								</header>
+        @RenderBody()
+                            </div>
+					</div>
+               
+        <!-- Sidebar -->
+
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<span class="image left" style="height:60px; width:60px"><img src="~/Content/images/logo.png" alt="" /></span>
+                                            <h2>Pakistan Railways</h2>
+									</header>
+									<ul>
+                                        <li><a class="list-group-item" href="/Admin/Homeindex"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a></li>
+										<li>
+											<span class="opener">Manage Staff</span>
+											<ul>
+                                                <li><a class="list-group-item" href="/Admin/Addstaff"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp; Add Employee</a></li>
+                                                <li><a class="list-group-item" href="/Admin/Viewstaff"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; View Employee</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Trains</span>
+											<ul>
+                                                <li><a class="list-group-item" href="/Admin/Addtrain"><i class="fa fa-train fa-fw" aria-hidden="true"></i>&nbsp; Add Train</a></li>
+                                                <li><a class="list-group-item" href="/Admin/Viewtrain"><i class="fa fa-train fa-fw" aria-hidden="true"></i>&nbsp; View Train</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Stations</span>
+											<ul>
+                                                <li><a class="list-group-item" href="/Admin/Addstat"><i class="fa fa-building-o fa-fw" aria-hidden="true"></i>&nbsp; Add Station</a></li>
+                                                <li><a class="list-group-item" href="/Admin/Viewstat"><i class="fa fa-building-o fa-fw" aria-hidden="true"></i>&nbsp; View station</a></li>
+											</ul>
+										</li>
+                                        <li><a class="list-group-item" href="/Admin/Trainschedule"><i class="fa fa-calendar-plus-o fa-fw" aria-hidden="true"></i>&nbsp; Train Schedule</a></li>
+                                        <li><a class="list-group-item" href="/Admin/Viewschedule"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp; View Schedule</a></li>
+										<li><a class="list-group-item" href="/Admin/Announce"><i class="fa fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp; Imp Announcements</a></li>
+                                         <li><a class="list-group-item" href="/Admin/Report"><i class="fa fa-file fa-fw" aria-hidden="true"></i>&nbsp; Ticket Report</a></li>
+									</ul>
+								</nav>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Add Announcement</h2>
+									</header>
+									<h3 style="color:red; "> @TempData["anmsg"]</h3>
+										<form method="post" action="/Admin/AddAnnouncements">
+											<div class="row uniform">
+												
+														
+														<div class="12u$">
+														<input type="text" name="title" id="title" value="" placeholder="Title" required/>
+														</div>
+														<!-- Break -->
+                                                        <!-- Break -->
+															<div class="12u$">
+																<textarea name="descript" id="descript" placeholder="Enter Description" rows="6" required></textarea>
+															</div>
+														<div class="12u$">
+														<ul class="actions">
+																<li><input type="submit" value="Add" class="special" /></li>
+																<li><input type="reset" value="Reset" /></li>
+														</ul>
+														</div>
+														</div>
+													</form>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+								</footer>
+
+						</div>
+					</div>
+</div>
+
+		<!-- Scripts -->
+			<script src="~/Scripts/jquery.min.js"></script>
+			<script src="~/Scripts/skel.min.js"></script>
+			<script src="~/Scripts/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="~/Scripts/main.js"></script>
+
+	</body>
+</html>
+

@@ -1,0 +1,134 @@
+﻿ @{
+                     Layout = "~/Views/Shared/_Layoutuser.cshtml";
+  }
+							<!-- Content -->
+                            <section>
+<!-- Scripts.Render("~/bundles/jquery") -->
+ <script>
+     function f1() {
+
+         var name=$("#tid").val();
+        
+         var d = { name: $("#tid").val() };
+
+         var settings = {
+             type: "POST",
+             dataType: "json",
+             url: "/Home/getstat",
+             data: d,
+             success: function (resp) {
+                 console.log(resp);   
+                 if (resp.list) {
+                     $("#fsid").empty();
+                     $("#tsid").empty();
+                     $("#fsid").append('<option value=0> -- Select Departure --</option>');
+                     $("#tsid").append('<option value=0>-- Select Destination --</option>');
+
+                     $.each(resp.list, function (i, item) {
+                         $("#fsid").append('<option value=' + item.station + '>' + item.station + '</option>');
+                         $("#tsid").append('<option value=' + item.station + '>' + item.station + '</option>');
+
+                         console.log(item.station);
+                     });
+                     
+                 }
+                 else {
+                     alert("No entry for selected train!!!");
+                 }
+             },
+             error: function (e) {
+                 alert("error");
+             }
+         };
+
+         $.ajax(settings);
+
+     };
+    
+</script>
+
+                 <header class="main">
+						    <h2> Seats Availability </h2>
+				 </header>
+                   <h2 style="color:red; "> @TempData["ticketmsg"]</h2>
+					        
+                     <form method="post" action="/Home/CustomCaptcha">
+                               <div class="row uniform">
+                                       
+									<div class="6u 12u$">    
+		                                  <input style="height:40px;"  id="date" name="date"  type="date" value="@TempData["date"]"/>
+                                     </div>
+		                                <!-- Break -->
+                                      <div class="6u 12u$">
+										<div  class="select-wrapper">
+												<select name="train"  id="tid" onchange="f1()">
+                                                <option value="null">--Select Train--</option>
+                                                <option value="23UP - AKBAR EXPRESS"> Akber Express (LAHORE JN. To QUETTA)</option>
+                                                <option value="24DN - AKBAR EXPRESS"> Akber Express (QUETTA To LAHORE JN. )</option>
+                                                <option value="10DN - ALLAMA IQBAL EXPRESS"> Allama Iqbal Express (SIALKOT JN. To KARACHI CANTT)</option>
+                                                <option value ="9UP - ALLAMA IQBAL EXPRESS"> Allama Iqbal Express (KARACHI CANTT To SIALKOT JN.)</option>
+                                                <option value="13UP - AWAM EXPRESS"> Awam Express (PESHAWAR CANTT To KARACHI CANTT)</option>
+                                                <option value="14DN - AWAM EXPRESS"> Awam Express (KARACHI CANTT To PESHAWAR CANTT)</option>
+                                                <option value="26DN -  Bahauddin Zakria Express"> Bahauddin Zakria Express (MULTAN CANTT To KARACHI CITY)</option>
+                                                <option value="25UP -  Bahauddin Zakria Express"> Bahauddin Zakria Express (KARACHI CITY To MULTAN CANTT)</option>
+                                                </select>
+											</div>
+										</div>
+                                        <!-- Break -->
+										<div class="6u 12u$">
+										<div class="select-wrapper">
+										<select name="from" id="fsid">
+                                                <option  value="null"> -- Select Departure--</option>
+                                             @foreach(var x in ViewBag.stls)
+                                              {
+                                                   <option >@x.St_name</option>
+                                                }
+                                         </select>
+										</div>
+										</div>
+                                                    <br />
+                                               <!-- Break -->
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+															<select name="to" id="tsid">
+                                                                 <option  value="null"> --Select Destination--</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+                                                 <!-- Break -->
+                                       
+													    <div class="6u$ 12u$(small)">
+                                                                <img src="/Home/GetCaptchaImage" title="Captcha"/>
+                                                                 <br />
+                                                                  <input type="text" name="clientCaptcha" placeholder="Write above text exactly" required />
+                                                                    <p style="font-weight:bold;color:red;"> @TempData["CaptchaError"] </p>
+                                                        </div>
+
+														<!-- Break -->
+														<div class="6u 12u$">
+														<ul class="actions">
+																<li><input type="submit" value="Book Now" class="special" /></li>
+																<li><input type="reset" value="Reset" /></li>
+														</ul>
+														</div>
+														</div>
+													</form>
+                                    </section>
+                            <section>
+									<header class="major">
+										<h2>Popular Destination</h2>
+									</header>
+									<div class="mini-posts">
+						
+										    <a href="#" class="image"><img src="~/Content/images/snap.png" alt="" /></a>
+									</div >
+												
+                             </section>
+
+			
+

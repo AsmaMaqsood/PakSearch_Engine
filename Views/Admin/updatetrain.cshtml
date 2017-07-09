@@ -1,0 +1,28 @@
+﻿@model myproject.Models.Train
+@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Update Train</h2>
+					</header>
+<br />
+<h3 style="color:red; "> @TempData["utrainmsg"]</h3>
+@using (Html.BeginForm())
+{
+      <div class="row uniform">
+       
+        <div class="6u 12u$">
+            <input  id="trainName" name="train_name" type="text"  value="@Model.train_name" required/>
+        </div>
+          <div class="6u 12u$">
+            <input  id="seats" name="Seats" type="text"  value="@Model.Seats" required/>
+        </div>
+          <div class="6u 12u$">
+            <input  id="trainst" name="Status" type="text"  value="@Model.Status" required/>
+        </div>
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update"   class="button special"/>
+        </div>
+   </div>
+}

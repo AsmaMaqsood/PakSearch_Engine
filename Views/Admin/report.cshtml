@@ -1,0 +1,111 @@
+﻿
+ @{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<script>
+         function f1() {
+
+             var fromid = $("#fdate").val();
+            // var toid = $("#tdate").val();
+
+             var d = { "fid": fromid};
+             var settings = {
+                 type: "POST",
+                 dataType: "json",
+                 url: "/Admin/getReport",
+                 data: d,
+                 success: function (resp) {
+                     console.log(resp);
+
+                     if (resp.list) {
+
+                         $("#timeTable").show();
+                         $("#tblBody").empty();
+                         var source = $("#listtemplate").html();
+                         var template = Handlebars.compile(source);
+
+                         var html = template(resp);
+                         $("#tblBody").append(html);
+                     }
+                     else {
+                         alert("No entry for selected stations!!!");
+                     }
+                 },
+                 error: function (e) {
+                     alert("error");
+                 }
+             };
+
+             $.ajax(settings);
+
+         };
+     </script>
+							<!-- Content -->
+                            <section>
+                                        <header class="main">
+										            <h2> Ticket Report </h2>
+									      </header>
+                                  <h2 style="color:red; "> @ViewData["reportmsg"]</h2>
+                                        <form>
+											    <div class="row uniform">
+									
+												<div class="6u 12u$">
+                                                        <input style="height:40px;" type="date"  id="fdate" value=""  />
+							
+														</div>
+                                                    <br />
+												
+                                                  
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+																<li><input onclick=f1() type="button" value="Show Report" class="special" /></li>
+														</ul>
+														</div>
+													</div>
+													</form>
+                          <div>
+                          <table id="timeTable"  class="table table-striped" style="display:none">
+                              <thead>
+                                  <tr>
+                                      <th>Departure</th>
+                                      <th>Destination</th>
+                                      <th>Train</th>
+                                       <th>Seat_Id</th>
+                                       <th>Date</th>
+                                      <th>Customer</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="tblBody"></tbody>
+                          </table>
+                      </div>      
+             
+			                    </section>						
+                           
+<!--this is used to add handel bar script file which will bee use to creat dummy row for table-->
+<script src="~/Scripts/ie/handlebars.js"></script>
+<script id="listtemplate" type="text/x-handlebars-template">
+    {{#each list}}
+    <tr>
+        <td>
+            <p>{{Source}}</p>
+            
+        </td>
+        <td>
+            <p>{{Dest}}</p>
+        </td>
+        <td>
+            <p>{{train}}</p>
+        </td>
+         <td>
+            <p>{{Seat_Id}}</p>
+        </td>
+         <td>
+            <p>{{date}}</p>
+        </td>
+     <td>
+            <p>{{custmor}}</p>
+        </td>
+    </tr>
+    {{/each}}
+</script>

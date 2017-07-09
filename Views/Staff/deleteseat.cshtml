@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "delete seat";
+}
+@{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Delete Seats</h2>
+					</header>
+<br />
+<h3>Are you sure you want to delete this?</h3>
+<div class="box" style="border-color:#f56a6a; border-bottom-width:2px; border-top-width:2px;">
+  
+<br />
+     <div >
+       &nbsp &nbsp &nbsp Source : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Model.Source
+    </div>
+<br />
+    <div >
+      &nbsp &nbsp &nbsp  Destination : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   @Model.Dest
+    </div>
+<br />
+    <div >
+      &nbsp &nbsp &nbsp Class : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Model.trainclass
+    </div>
+<br />
+    <div >
+     &nbsp &nbsp &nbsp  Train Name: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   @Model.train
+    </div>
+<br />
+    <div >
+    &nbsp &nbsp &nbsp   Seat id : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   @Model.Seat_Id
+    </div>
+<br />
+     <div >
+    &nbsp &nbsp &nbsp   Customer : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp   @Model.custmor
+    </div>
+    <br />
+<form action="/Staff/delseat" method="post">
+
+    <input type="hidden" name="trname" value="@Model.Tid" />
+   <br />
+    &nbsp &nbsp &nbsp    <input class="special" type="submit" value="Delete" /> 
+ </form>
+
+    </div>

@@ -1,0 +1,147 @@
+﻿
+ @{
+                     Layout = "~/Views/Shared/_Layoutuser.cshtml";
+  }
+<script>
+         function f1() {
+
+             var fromid = $("#fsid").val();
+             var toid = $("#tsid").val();
+             var classid = $("#cla").val();
+
+        
+             var d = { "fid": fromid, "tid": toid, "cid": classid };
+
+             var settings = {
+                 type: "POST",
+                 dataType: "json",
+                 url: "/Home/getFare",
+                 data: d,
+                 success: function (resp) {
+                     console.log(resp);
+
+                     if (resp.list) {
+
+                         $("#timeTable").show();
+                         $("#tblBody").empty();
+                         var source = $("#listtemplate").html();
+                         var template = Handlebars.compile(source);
+
+                         var html = template(resp);
+                         $("#tblBody").append(html);
+                     }
+                     else {
+                         alert("No entry for selected stations!!!");
+                     }
+                 },
+                 error: function (e) {
+                     alert("error");
+                 }
+             };
+
+             $.ajax(settings);
+
+         };
+     </script>
+							<!-- Content -->
+                            <section>
+                                        <header class="main">
+										            <h2> Check Fare for Destination </h2>
+									      </header>
+                                  <h2 style="color:red; "> @ViewData["faremsg"]</h2>
+                                        <form>
+											    <div class="row uniform">
+									
+												<!-- Break -->
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+															<select name="from" id="fsid">
+                                                                 <option value="0"> -- Select Station --</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+															<select name="to" id="tsid">
+                                                                 <option value="0"> -- Select Station --</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+                                                    <div class="6u 12u$">
+														<div class="select-wrapper">
+															<select name="Class" id="cla">
+																<option value="0">-- Select Class--</option>
+																<option>AC Sleeper</option>
+																<option>AC Business</option>
+																<option>AC Standard</option>
+																<option>First Class Sleeper</option>
+																<option>Economy Class</option>
+																<option>Second Class</option>
+															</select>
+														</div>
+													</div>
+                                                    <br />
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+																<li><input onclick=f1() type="button" value="Check Fare" class="special" /></li>
+														</ul>
+														</div>
+													</div>
+													</form>
+                          <div>
+                          <table id="timeTable"  class="table table-striped" style="display:none">
+                              <thead>
+                                  <tr>
+                                      <th> Source station</th>
+                                      <th>Destination</th>
+                                      <th>Class</th>
+                                      <th>Fare</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="tblBody"></tbody>
+                          </table>
+                      </div>      
+             
+			                    </section>						
+                            <section>
+									<header class="major">
+										<h2>Popular Destination</h2>
+									</header>
+									<div class="mini-posts">
+						
+										    <a href="#" class="image"><img src="~/Content/images/snap.png" alt="" /></a>
+									</div >
+												
+                             </section>
+<!--this is used to add handel bar script file which will bee use to creat dummy row for table-->
+<script src="~/Scripts/ie/handlebars.js"></script>
+<script id="listtemplate" type="text/x-handlebars-template">
+    {{#each list}}
+    <tr>
+        <td>
+            <p>{{source}}</p>
+            
+        </td>
+        <td>
+            <p>{{dest}}</p>
+        </td>
+        <td>
+            <p>{{Class}}</p>
+        </td>
+        <td>
+            <p>{{fareRate}}</p>
+        </td>
+    </tr>
+    {{/each}}
+</script>

@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Login</title>
+    <link rel="icon" href="~/Content/images/logo.png"">
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Flashy Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+<link rel="stylesheet" href="~/Content/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<!-- //online-fonts -->
+<style>
+    body {
+    text-align: center;
+	font-family: 'Roboto', sans-serif;
+	background-image: url("/Content/images/class1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+    background-position: center;
+}
+
+</style>
+</head>
+<body >
+	<!-- main -->
+	<div style="padding-top:-30px; padding-bottom:-40px; margin-top:-40px;  margin-bottom:-100px;">
+		<div class="center-container" >
+			<!--header-->
+			<div class="header-w3l">
+				<h1 style="padding-top:-30px; padding-bottom:-40px;">Pakistan Railways</h1>
+			</div>
+			<!--//header-->
+			<div class="main-content-agile">
+				<div class="left-w3l-mk">
+                  
+					<img src="~/Content/images/pro.jpg" alt=" ">
+                    <br /><h2 style="color:#fff;"><span style="color:#fff;">Connect</span> to Your Account</h2>
+					<br /><div class="social-icon">
+							<a href="https://twitter.com/pakrailpk" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="https://www.facebook.com/pakrail.gov.pk/" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="https://s50522.pakservers.com:2096/index.php" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+						</div>
+				</div>
+				<div class="sub-main-w3">	
+					<div class="wthree-pro">
+                        <h3 style="color:red; margin-bottom:20px; "> @TempData["Loginmsg"]</h3>
+                        <br /><br />
+					</div>
+                  <br /> <br /><br />
+					<form action="/Home/checklogin" method="post" style="margin-top:-60px;">
+						<input placeholder="Username" name="Name" class="user" type="text" value="@TempData["name"]" required="">
+						<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br><br>
+						<input  placeholder="Password" name="Password" class="pass" type="password" required="">
+						<span class="icon6" style="margin-top:1px;"><i class="fa fa-unlock" style="top:39%;" aria-hidden="true"></i></span><br>
+						<br />
+						<input type="submit" value="Login">
+					
+					</form>
+                     <div class="hh">
+                              <br /> <a style="color: #fff;font-size: 1.52em; " href="/Home/fpass">Forgot Password?</a>
+                            <br />
+                            <br /><h6 style="color: #32CD32;">Dont have Account? <a style="color: #fff;font-size: 1.52em; " href="/Home/Register">Register Now</a></h6>
+                             </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--//main-->
+            <div class="footer">
+				</div>
+		</div>
+	</div>
+	
+<!-- js -->
+<script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="~/Scripts/jquery.vide.min.js"></script>
+</body>
+</html>

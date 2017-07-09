@@ -1,0 +1,132 @@
+﻿@{
+      Layout = "~/Views/Shared/_Layoutuser.cshtml";
+  }
+     <script>
+         function f1() {
+
+             var trid = $("#tid").val();
+             var d = { "id": trid };
+             var settings = {
+                 type: "POST",
+                 dataType: "json",
+                 url: "/Home/getTrainTimings",
+                 data: d,
+                 success: function (resp) {
+                     console.log(resp);
+
+                     if (resp.list) {
+
+                         $("#timeTable").show();
+                         $("#tblBody").empty();
+                         var source = $("#listtemplate").html();
+                         var template = Handlebars.compile(source);
+
+                         var html = template(resp);
+                         $("#tblBody").append(html);
+
+                     }
+                 },
+                 error: function (e) {
+                     alert("error");
+                 }
+             };
+
+             $.ajax(settings);
+
+         };
+     </script>
+							<!-- Content -->
+                            <section>
+                                        <header class="main">
+										            <h2> Train Schedule </h2>
+									      </header>
+                                 <h2 style="color:red; "> @TempData["trainmsg"]</h2>
+                                 <br />
+                                        <form >
+											    <div class="row uniform">
+									
+												<!-- Break -->
+													<div class="6u 12u$">
+														<div class="select-wrapper">
+
+                                                            <select id="tid">
+                                                                 <option value="null">--Select Train--</option>
+                                                                @foreach (var x in ViewBag.trainls)
+                                                                {
+                                                                    <option>@x.train_name</option>
+                                                                }
+                                                            </select>
+
+														</div>
+													</div>
+                                                    <br />
+													<div class="6u 12u$">
+                                                        <input style="height:40px;" type="date" name="date" id="date" value=""  />
+							
+														</div>
+                                                    <br />
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+																<li><input onclick=f1() type="button"  value="Search Timings" class="special" /></li>
+																
+														</ul>
+														</div>
+													</div>
+													</form>
+
+
+
+                      <div>
+                          <table id="timeTable"  class="table table-striped" style="display:none">
+                              <thead>
+                                  <tr>
+                                      <th>Train Name</th>
+                                      <th>Station Name</th>
+                                         <th>Arival Time</th>
+                                      <th>Departure Time</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="tblBody"></tbody>
+                          </table>
+                      </div>  
+
+
+
+
+
+			                    </section>			
+                             <section>
+									<header class="major">
+										<h2>Popular Destination</h2>
+									</header>
+									<div class="mini-posts">
+						
+										    <a href="#" class="image"><img src="~/Content/images/snap.png" alt="" /></a>
+									</div >
+												
+                             </section>
+						
+
+<!--this is used to add handel bar script file which will bee use to creat dummy row for table-->
+<script src="~/Scripts/ie/handlebars.js"></script>
+<script id="listtemplate" type="text/x-handlebars-template">
+    {{#each list}}
+    <tr>
+        <td>
+            <p>{{tname}}</p>
+            
+        </td>
+        <td>
+            <p>{{stn_name}}</p>
+        </td>
+        <td>
+            <p>{{Ariv_time}}</p>
+        </td>
+        <td>
+            <p>{{Depart_time}}</p>
+        </td>
+       
+    </tr>
+    {{/each}}
+</script>

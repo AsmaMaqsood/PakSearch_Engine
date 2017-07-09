@@ -1,0 +1,24 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Add Station</h2>
+					</header>
+<h3 style="color:red; "> @TempData["astatmsg"]</h3>
+@using (Html.BeginForm("addst","Admin"))
+{
+      <div class="row uniform">
+       
+        <div class="6u 12u$">
+            <input  id="stName" name="St_name" type="text" placeholder="Station Name" value="@TempData["stname"]" required/>
+        </div>
+          <div class="6u 12u$">
+           <input  id="nop" name="noOfPlatform" type="text" placeholder="Number of Platforms" value="@TempData["p"]" required/>
+        </div>
+        
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="ADD"   class="button special"/>
+        </div>
+   </div>
+}

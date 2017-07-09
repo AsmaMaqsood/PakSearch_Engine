@@ -1,0 +1,30 @@
+﻿@model myproject.Models.Fare
+@{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2>Hey  @Session["login"] , Update  your Password</h2>
+					</header>
+<br />
+<h3 style="color:red; "> @TempData["upassmsg"]</h3>
+ <form method="post" action="/Staff/upuser">
+	<div class="row uniform">          
+         <div class="6u 12u$">
+              <input   name="Username" type="text" placeholder="Enter Username"  required/>
+          </div>
+           <div class="6u 12u$">
+               <input   name="Password" type="text"  placeholder="Enter Password"  required />
+            </div>
+        <div class="6u 12u$">
+               <input   name="rPassword" type="text"  placeholder="Re-Enter Password"  required/>
+            </div>
+
+
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update"   class="button special"/>
+        </div>
+   </div>
+</form>
+
+

@@ -1,0 +1,29 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+<header class="main">
+                        <br />
+					        <h2> Delete Train</h2>
+					</header>
+<h3>Are you sure you want to delete this?</h3>
+    <div class="box" style="border-color:#f56a6a; border-bottom-width:2px; border-top-width:2px;">
+  
+    <div >
+     &nbsp &nbsp &nbsp &nbsp   Train Name: &nbsp &nbsp &nbsp &nbsp   @Model.train_name
+    </div>
+    <br />
+    <div >
+     &nbsp &nbsp &nbsp &nbsp    Seats :  &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp @Model.Seats
+    </div>
+    <br />
+    <div >
+     &nbsp &nbsp &nbsp &nbsp   Status : &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp @Model.Status
+    </div>
+    <br />
+<form action="/Admin/deltr" method="post">
+
+   <input type="hidden" name="trname" value="@Model.train_name" />
+
+     &nbsp &nbsp &nbsp &nbsp     <input class="special" type="submit" value="Delete" /> 
+ </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> Add Schedule of Trains</h2>
+					</header>
+<h3 style="color:red; "> @TempData["schedulemsg"]</h3>
+@using (Html.BeginForm("TrainSchedule","Admin"))
+{
+      <div class="row uniform">
+         <div class="6u 12u$">
+				<div  class="select-wrapper">
+						<select id="tid" name="tname">
+                         <option value="0"> -- Select Train --</option>
+                         @foreach(var x in ViewBag.trainls)
+                         {  <option>@x.train_name</option> }
+                         </select>
+					</div>
+			</div>
+         <br />
+          <div class="6u 12u$">
+				<div  class="select-wrapper">
+					<select id="sid" name="stn_name">
+                         <option value="0"> -- Select Station --</option>
+                         @foreach(var x in ViewBag.stationls)
+                         {  <option>@x.St_name</option> }
+                         </select>
+				</div>
+			</div>
+        <br />
+          <div class="6u 12u$">
+            <input  id="atime" name="Ariv_time" type="text" placeholder="Arrival  Time (17:00)" value="@TempData["at"]" required />
+        </div>
+        <div class="6u 12u$">
+            <input  id="dtime" name="Depart_time" type="text" placeholder="Departure Time (17:00)" value="@TempData["dt"]" required/>
+        </div>
+          
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Add Schedule"   class="button special"/>
+        </div>
+   </div>
+}

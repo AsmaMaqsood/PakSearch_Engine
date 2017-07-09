@@ -1,0 +1,24 @@
+﻿ @{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+ @model List<myproject.Models.Announcement>
+
+							<!-- Banner -->
+								
+										
+											<h3>Welcome to Staff Panel</h3>	
+									
+									<div class="content">	
+                                             <h2> Important Announcements</h2>
+                                               
+                                            @foreach (var item in Model)
+                                            {
+                                                <input type="hidden" name="id" value="@item.Id"/>
+                        
+                                                     <div class="box">
+                                                          <h3> @item.title</h3> 
+                                                            @item.Description 
+                                                             </div>
+                                                <br />
+                                            }
+									</div>

@@ -1,0 +1,47 @@
+﻿@{
+                     Layout = "~/Views/Shared/_Layoutadmin.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> Update Schedule of Trains</h2>
+					</header>
+<h3 style="color:red; "> @TempData["uschedulemsg"]</h3>
+@using (Html.BeginForm())
+{
+    
+      <div class="row uniform">
+           <div class="6u 12u$">
+            <input  id="Id" name="Id" type="hidden"  value="@Model.Id" />
+        </div>
+         <div class="6u 12u$">
+				<div  class="select-wrapper">
+						<select id="tid" name="tname">
+                         <option> @Model.tname</option>
+                         @foreach(var x in ViewBag.trainls)
+                         {  <option>@x.train_name</option> }
+                         </select>
+					</div>
+			</div>
+         <br />
+          <div class="6u 12u$">
+				<div  class="select-wrapper">
+					<select id="sid" name="stn_name">
+                         <option> @Model.stn_name</option>
+                         @foreach(var x in ViewBag.stationls)
+                         {  <option>@x.St_name</option> }
+                         </select>
+				</div>
+			</div>
+        <br />
+        <div class="6u 12u$">
+            <input  id="dtime" name="Depart_time" type="text" placeholder="Departure Time (17:00)" value=" @Model.Depart_time" required/>
+        </div>
+          <div class="6u 12u$">
+            <input  id="atime" name="Ariv_time" type="text" placeholder="Arrival  Time (17:00)" value=" @Model.Ariv_time" required />
+        </div>
+        <div class="12u$" >
+            <input type="submit"  style="width:49%" value="Update Schedule"   class="button special"/>
+        </div>
+   </div>
+}

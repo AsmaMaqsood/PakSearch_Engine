@@ -1,0 +1,52 @@
+﻿@model List<myproject.Models.Fare>
+@{
+    ViewBag.Title = "Show Fare";
+}
+ @{
+                     Layout = "~/Views/Shared/_Layoutstaff.cshtml";
+  }
+
+<header class="main">
+                        <br />
+					        <h2> View Fare </h2>
+					</header>
+<br />
+<table>
+    <tr>
+        <th>
+           source
+        </th>
+        <th>
+            Destination
+        </th>
+        <th>
+            train class
+        </th>
+         <th>
+            Fare
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.source
+        </td>
+        <td>
+            @item.dest
+        </td>
+        <td>
+           @item.Class
+        </td>
+        <td>
+           @item.fareRate
+        </td>
+        <td>
+            @Html.ActionLink(".","UpdateFare",  new { id=item.ReceiptId }, new { @class="icon fa fa-pencil fa-fw"}) | 
+            @Html.ActionLink( ".","DeleteFare", new { id=item.ReceiptId }, new { @class="icon fa fa-trash-o fa-fw"}) 
+        </td>
+    </tr>
+}
+</table>
+

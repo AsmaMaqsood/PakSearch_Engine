@@ -1,0 +1,197 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Pakistan Railways
+	html5up.net | 
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+	<head>
+		<title>@ViewBag.Title</title>
+        <link rel="icon" href="~/Content/images/logo.png"">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!-- for boot strap coursel -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="~/Content/main.css" />
+		
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    
+ <!-- date picker-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<style>
+
+    input[type="date"]
+	 {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		background: #ffffff;
+		border-radius: 0.375em;
+		border: none;
+		border: solid 1px rgba(210, 215, 217, 0.75);
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0 1em;
+		text-decoration: none;
+		width: 100%;
+        height:90%;
+	}
+
+        input[type="date"]:invalid {
+			box-shadow: none;
+		}
+
+		
+        input[type="date"]:focus {
+			border-color: #f56a6a;
+			box-shadow: 0 0 0 1px #f56a6a;
+		}
+
+</style>
+	</head>
+	<body>
+        	<!-- Wrapper -->
+			<div id="wrapper">
+                
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/home/Index" class="logo"><strong>PAKISTAN RAILWAYS</strong></a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/pakrailpk" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/pakrail.gov.pk/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://s50522.pakservers.com:2096/index.php" class="icon fa-medium"><span class="label">Medium</span></a></li>
+									    
+                                        <li><span class="label" style="color:grey; font-size:14px;  margin-left:-14px; margin-right:-14px"> Login </span></li>
+                                        <li><a href="/Home/Login" class="icon fa-sign-in" ></a></li>
+                                        <li><span class="label" style="color:grey; font-size:14px;  margin-left:-14px; margin-right:-14px"> Register </span></li>
+                                        <li><a href="/Home/Register" class="icon fa-registered" ><span class="label"> Register </span></a></li>
+										<li><span class="label" style="color:grey; font-size:14px;  margin-left:-14px; margin-right:-14px"> Logout </span></li>
+                                        <li><a href="/Home/Logout" class="icon fa-sign-out" ></a></li>
+                                    </ul>
+								</header>
+        @RenderBody()
+                            </div>
+					</div>
+               
+        <!-- Sidebar -->
+
+					<div id="sidebar">
+						<div class="inner">
+
+							
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<span class="image left" style="height:60px; width:60px"><img src="~/Content/images/logo.png" alt="" /></span><h2>Pakistan Railways</h2>
+									</header>
+									<ul>
+                                        <li><a href="/Home/index"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a></li>	
+										<li><a href="/Home/Classes"><i class="fa fa-train fa-fw" aria-hidden="true"></i> Train Classes</a></li>
+                                        <li><a href="/Home/Train""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Train Timings</a></li>
+										<li><a href="/Home/Ticket"><i class="fa fa-ticket fa-fw" aria-hidden="true"></i> Go For E-ticket</a></li>
+                                        <li><a href="/Home/Fare"><i class="fa fa-money fa-fw" aria-hidden="true"></i> Check Fare</a></li>
+										<li><a href="/Home/Contact"><i class="fa fa-envelope-o fw" aria-hidden="true"></i> Contact Us</a></li>
+										<li><a href="/Home/About"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> About</a></li>
+										
+                                        @{
+                                        if(Session["login"] != null)
+                                        {
+                                            <li><a href="/Home/Pass"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Update Password</a></li>
+										
+                                        }
+                                        }
+									</ul>
+								</nav>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>BOOK E-TICKET</h2>
+									</header>
+									
+										<form method="post" action="/Home/Ticket">
+											<div class="row uniform">
+												
+														<!-- Break -->
+													<div class="12u$">
+														<div class="select-wrapper">
+															<select name="from" id="fsid">
+                                                                 <option> -- Select Departure --</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+													<div class="12u$">
+														<div class="select-wrapper">
+															<select name="to" id="tsid">
+                                                                 <option> -- Select Destination --</option>
+                                                                @foreach(var x in ViewBag.stls)
+                                                                {
+                                                                    <option>@x.St_name</option>
+                                                                }
+                                                            </select>
+														</div>
+													</div>
+                                                    <br />
+														<!-- Break -->
+														<div class="12u$">
+														<input style="height:40px;" type="date" name="date" id="date" value=""  />
+														</div>
+														<!-- Break -->
+														<div class="12u$">
+														<ul class="actions">
+																<li><input type="submit" value="Book Now" class="special" /></li>
+																<li><input type="reset" value="Reset" /></li>
+														</ul>
+														</div>
+														</div>
+													</form>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get In Touch</h2>
+									</header>
+									<p>Note my contact Details. If you want to get details of trains arrival and departure</p>
+									<ul class="contact">
+										<li class="fa-envelope-o">user@gmail.com</li>
+										<li class="fa-phone"> 0000-0000-0000 </li>
+										<li class="fa-home">  00000-0000</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									</footer>
+
+						</div>
+					</div>
+</div>
+
+		<!-- Scripts -->
+			<script src="~/Scripts/jquery.min.js"></script>
+			<script src="~/Scripts/skel.min.js"></script>
+			<script src="~/Scripts/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="~/Scripts/main.js"></script>
+
+	</body>
+</html>
+
